@@ -77,8 +77,6 @@ How it works: Completes the full TCP three-way handshake with each target port. 
 
 Result: Similar port/service output to the stealth scan but more detectable on the target's logs.
 
-https://images/tcp-connect-scan.png
-
 Scan 3: UDP Scan
 Command:
 
