@@ -106,7 +106,6 @@ Result: Scan took 1027 seconds (~17 minutes) — significantly slower and less r
 
 ## Scan 4: ACK Scan
 Command:
-
 bash
 nmap -sA 192.168.56.101
 How it works: Sends ACK packets to map firewall rules. It does not identify open/closed ports — instead it classifies ports as filtered or unfiltered.
