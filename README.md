@@ -32,6 +32,7 @@ Command:
 
 bash
 nmap -sS 192.168.56.101
+
 How it works: Sends a SYN packet to each port. If the port is open, the target replies with SYN-ACK. The scan never completes the three-way handshake — making it faster and harder to detect than a full connect scan.
 
 Key findings:
@@ -73,6 +74,7 @@ Command:
 
 bash
 nmap -sT 192.168.56.101
+
 How it works: Completes the full TCP three-way handshake with each target port. More reliable than a SYN scan, but noisier — connection attempts are logged by the target.
 
 Result: Similar port/service output to the stealth scan but more detectable on the target's logs.
@@ -82,6 +84,7 @@ Command:
 
 bash
 nmap -sU 192.168.56.101
+
 How it works: Sends UDP packets instead of TCP. Since UDP is connectionless (no handshake), results are less clear — a lack of response may mean open or filtered.
 
 Key findings:
@@ -106,8 +109,10 @@ Result: Scan took 1027 seconds (~17 minutes) — significantly slower and less r
 
 ## Scan 4: ACK Scan
 Command:
+
 bash
 nmap -sA 192.168.56.101
+
 How it works: Sends ACK packets to map firewall rules. It does not identify open/closed ports — instead it classifies ports as filtered or unfiltered.
 
 Key findings:
