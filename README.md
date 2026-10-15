@@ -25,7 +25,7 @@ Before scanning, connectivity between Kali and Metasploitable 2 was verified usi
 ping 192.168.56.101
 Result: 0% packet loss — target reachable, scans can proceed.
 
-1
+![1](1.png)
 
 Scan 1: Stealth Scan (SYN Scan)
 Command:
@@ -66,7 +66,7 @@ Key findings:
 
 Result: Scan completed in 0.98 seconds — fast and rich with service information.
 
-2
+![2](2.png)
 
 Scan 2: TCP Connect Scan
 Command:
@@ -104,7 +104,7 @@ Open services identified:
 
 Result: Scan took 1027 seconds (~17 minutes) — significantly slower and less reliable than TCP scans.
 
-3
+![3](3.png)
 
 Scan 4: ACK Scan
 Command:
@@ -121,4 +121,4 @@ No ports marked as filtered
 
 Result: No firewall filtering observed — traffic is passing freely between the VMs.
 
-4
+![4](4.png)
