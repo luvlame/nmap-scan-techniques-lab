@@ -1,26 +1,38 @@
-Nmap Scan Techniques — Penetration Testing Lab
-A hands-on penetration testing lab comparing four Nmap scan techniques against a deliberately vulnerable target (Metasploitable 2) in an isolated virtual network.
+# Nmap Scan Techniques — Penetration Testing Lab
 
-Objective
+A hands-on penetration testing lab comparing four Nmap scan techniques against a deliberately vulnerable target (Metasploitable 2) in an isolated virtual network.
+01 — Active Directory & Identity
+
+## Objective
+
 Demonstrate how different Nmap scans interact with a target, what information each returns, and when to use each technique during the reconnaissance phase of a penetration test.
 
-Lab Environment
-Role	System	IP Address
-Attacker	Kali Linux	192.168.56.1
-Target	Metasploitable 2	192.168.56.101
-Network	Host-Only (isolated)	—
-Tools used: Nmap 7.95, Oracle VirtualBox
+## Lab Environment
 
-Pre-Scan: Connectivity Test
-Before scanning, connectivity between Kali and Metasploitable 2 was verified using ping to confirm both VMs were on the same network and reachable.
+| Role | System | IP Address |
+|------|--------|------------|
+| Attacker | Kali Linux | 192.168.56.1 |
+| Target | Metasploitable 2 | 192.168.56.101 |
+| Network | Host-Only (isolated) | — |
 
-ping 192.168.56.101 Result: 0% packet loss — target reachable, scans can proceed.
+**Tools used:** Nmap 7.95, Oracle VirtualBox
+
+## Pre-Scan: Connectivity Test
+
+Before scanning, connectivity between Kali and Metasploitable 2 was verified using `ping` to confirm both VMs were on the same network and reachable.
+
+
+ping 192.168.56.101
+Result: 0% packet loss — target reachable, scans can proceed.
 
 1
 
-Scan 1: Stealth Scan (SYN Scan) Command:
+Scan 1: Stealth Scan (SYN Scan)
+Command:
 
-bash nmap -sS 192.168.56.101 How it works: Sends a SYN packet to each port. If the port is open, the target replies with SYN-ACK. The scan never completes the three-way handshake — making it faster and harder to detect than a full connect scan.
+bash
+nmap -sS 192.168.56.101
+How it works: Sends a SYN packet to each port. If the port is open, the target replies with SYN-ACK. The scan never completes the three-way handshake — making it faster and harder to detect than a full connect scan.
 
 Key findings:
 
@@ -56,17 +68,23 @@ Result: Scan completed in 0.98 seconds — fast and rich with service informatio
 
 2
 
-Scan 2: TCP Connect Scan Command:
+Scan 2: TCP Connect Scan
+Command:
 
-bash nmap -sT 192.168.56.101 How it works: Completes the full TCP three-way handshake with each target port. More reliable than a SYN scan, but noisier — connection attempts are logged by the target.
+bash
+nmap -sT 192.168.56.101
+How it works: Completes the full TCP three-way handshake with each target port. More reliable than a SYN scan, but noisier — connection attempts are logged by the target.
 
 Result: Similar port/service output to the stealth scan but more detectable on the target's logs.
 
 https://images/tcp-connect-scan.png
 
-Scan 3: UDP Scan Command:
+Scan 3: UDP Scan
+Command:
 
-bash nmap -sU 192.168.56.101 How it works: Sends UDP packets instead of TCP. Since UDP is connectionless (no handshake), results are less clear — a lack of response may mean open or filtered.
+bash
+nmap -sU 192.168.56.101
+How it works: Sends UDP packets instead of TCP. Since UDP is connectionless (no handshake), results are less clear — a lack of response may mean open or filtered.
 
 Key findings:
 
@@ -88,9 +106,12 @@ Result: Scan took 1027 seconds (~17 minutes) — significantly slower and less r
 
 3
 
-Scan 4: ACK Scan Command:
+Scan 4: ACK Scan
+Command:
 
-bash nmap -sA 192.168.56.101 How it works: Sends ACK packets to map firewall rules. It does not identify open/closed ports — instead it classifies ports as filtered or unfiltered.
+bash
+nmap -sA 192.168.56.101
+How it works: Sends ACK packets to map firewall rules. It does not identify open/closed ports — instead it classifies ports as filtered or unfiltered.
 
 Key findings:
 
