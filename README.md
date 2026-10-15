@@ -1,7 +1,6 @@
 # Nmap Scan Techniques — Penetration Testing Lab
 
 A hands-on penetration testing lab comparing four Nmap scan techniques against a deliberately vulnerable target (Metasploitable 2) in an isolated virtual network.
-01 — Active Directory & Identity
 
 ## Objective
 
