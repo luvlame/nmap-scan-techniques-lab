@@ -27,7 +27,7 @@ Result: 0% packet loss — target reachable, scans can proceed.
 
 ![1](1.png)
 
-Scan 1: Stealth Scan (SYN Scan)
+## Scan 1: Stealth Scan (SYN Scan)
 Command:
 
 bash
@@ -68,7 +68,7 @@ Result: Scan completed in 0.98 seconds — fast and rich with service informatio
 
 ![2](2.png)
 
-Scan 2: TCP Connect Scan
+## Scan 2: TCP Connect Scan
 Command:
 
 bash
@@ -77,7 +77,7 @@ How it works: Completes the full TCP three-way handshake with each target port. 
 
 Result: Similar port/service output to the stealth scan but more detectable on the target's logs.
 
-Scan 3: UDP Scan
+## Scan 3: UDP Scan
 Command:
 
 bash
@@ -104,7 +104,7 @@ Result: Scan took 1027 seconds (~17 minutes) — significantly slower and less r
 
 ![3](3.png)
 
-Scan 4: ACK Scan
+## Scan 4: ACK Scan
 Command:
 
 bash
